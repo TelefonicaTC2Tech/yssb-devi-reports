@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignore mac files  
+.DS_Store
+
+# Ignore excel files generated during debugging
+/*.xlsx
