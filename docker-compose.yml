@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+
+  develenv:
+    build: .
+    environment:
+      DEVI_APIKEY: ${DEVI_APIKEY:-}
+    command: tail -f /dev/null
+    volumes:
+      - .:/src
