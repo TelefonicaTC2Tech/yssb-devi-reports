@@ -32,6 +32,5 @@ class Fields:
         return map(lambda x: x.replace(' ', '_').lower(), self.names())
     
     def process(self, request):
-        """Return an array with the field values according to request and connection parameters."""
-        connection = get_value(request, 'asset.connection', None)
-        return map(lambda x: x.f(request, connection), self._fields)
+        """Return an array with the field values according to request parameter."""
+        return map(lambda x: x.f(request), self._fields)

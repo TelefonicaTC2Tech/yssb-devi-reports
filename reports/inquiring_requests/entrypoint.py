@@ -10,20 +10,20 @@ from reports.utils import convert_to_datetime, get_value, get_value_from_array_b
 
 
 FIELDS = Fields((
-    Field('Request ID', lambda r, _: get_value(r, 'id')),
-    Field('Created At', lambda r, _: convert_to_datetime(get_value(r, 'created'))),
-    Field('Last Change At', lambda r, _: convert_to_datetime(get_value(r, 'updated'))),
-    Field('Customer ID', lambda r, _: get_value(r, 'asset.tiers.customer.id')),
-    Field('Customer Name', lambda r, _: get_value(r, 'asset.tiers.customer.name')),
-    Field('Customer TaxID', lambda r, _: get_value(r, 'asset.tiers.customer.tax_id')),
-    Field('Customer External ID', lambda r, _: get_value(r, 'asset.tiers.customer.external_id')),
-    Field('Asset ID', lambda r, _: get_value(r, 'asset.id')),
-    Field('Asset External ID', lambda r, _: get_value(r, 'asset.external_id')),
-    Field('TC Name Reason', lambda r, _: get_value_from_array_by_id(r, 'asset.params', 'technicalName', 'value_error')),
-    Field('TC e-Mail Reason', lambda r, _: get_value_from_array_by_id(r, 'asset.params', 'technicalEmail', 'value_error')),
-    Field('TC Phone Reason', lambda r, _: get_value_from_array_by_id(r, 'asset.params', 'technicalPhone', 'value_error')),
-    Field('Domain', lambda r, _: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value')),
-    Field('Domain Reason', lambda r, _: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value_error')),
+    Field('Request ID', lambda r: get_value(r, 'id')),
+    Field('Created At', lambda r: convert_to_datetime(get_value(r, 'created'))),
+    Field('Last Change At', lambda r: convert_to_datetime(get_value(r, 'updated'))),
+    Field('Customer ID', lambda r: get_value(r, 'asset.tiers.customer.id')),
+    Field('Customer Name', lambda r: get_value(r, 'asset.tiers.customer.name')),
+    Field('Customer TaxID', lambda r: get_value(r, 'asset.tiers.customer.tax_id')),
+    Field('Customer External ID', lambda r: get_value(r, 'asset.tiers.customer.external_id')),
+    Field('Asset ID', lambda r: get_value(r, 'asset.id')),
+    Field('Asset External ID', lambda r: get_value(r, 'asset.external_id')),
+    Field('TC Name Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalName', 'value_error')),
+    Field('TC e-Mail Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalEmail', 'value_error')),
+    Field('TC Phone Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalPhone', 'value_error')),
+    Field('Domain', lambda r: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value')),
+    Field('Domain Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value_error')),
 ))
 
 
