@@ -24,6 +24,7 @@ FIELDS = Fields((
     Field('TC Phone Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalPhone', 'value_error')),
     Field('Domain', lambda r: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value')),
     Field('Domain Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value_error')),
+    Field('Sede Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'sede', 'value_error')),
 ))
 
 
