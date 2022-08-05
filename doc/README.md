@@ -36,6 +36,9 @@ make devi-account
 # List the reports provided by this repository
 make devi-reports
 
+# Generate a params report
+make devi-report-params
+
 # Generate a fulfillment report
 make devi-report-fulfillment
 

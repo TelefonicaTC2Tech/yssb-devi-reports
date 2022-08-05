@@ -19,6 +19,7 @@ Usage: make <command>
   develenv-down:           Stop the development environment
   devi-account:            Add Devi account using the apikey with DEVI_APIKEY env var
   devi-reports:            List the reports in Devi for this account
+  devi-report-params:      Execute the report fulfillment_params_requests
   devi-report-fulfillment: Execute the report fulfillment_requests_taxid
   devi-report-inquiring:   Execute the report inquiring_requests
 
@@ -63,6 +64,10 @@ devi-account: check-DEVI_APIKEY
 .PHONY: devi-reports
 devi-reports:
 	ccli report list -d .
+
+.PHONY: devi-report-params
+devi-report-params:
+	ccli report execute fulfillment_params_requests -d .
 
 .PHONY: devi-report-fulfillment
 devi-report-fulfillment:
