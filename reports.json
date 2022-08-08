@@ -121,6 +121,27 @@
                "name": "Marketplaces",
                "required": true,
                "description": "Select the marketplaces you want to include in report"
+            },
+            {
+               "id": "environment",
+               "type": "checkbox",
+               "name": "Environment (connection type)",
+               "description": "Select the environment you want to include in report",
+               "required": true,
+               "choices": [
+                  {
+                     "value": "production",
+                     "label": "Production"
+                  },
+                  {
+                     "value": "preview",
+                     "label": "Preview"
+                  },
+                  {
+                     "value": "test",
+                     "label": "Test"
+                  }
+               ]
             }
          ]
       },
@@ -179,6 +200,27 @@
                "name": "Marketplaces",
                "required": true,
                "description": "Select the marketplaces you want to include in report"
+            },
+            {
+               "id": "environment",
+               "type": "checkbox",
+               "name": "Environment (connection type)",
+               "description": "Select the environment you want to include in report",
+               "required": true,
+               "choices": [
+                  {
+                     "value": "production",
+                     "label": "Production"
+                  },
+                  {
+                     "value": "preview",
+                     "label": "Preview"
+                  },
+                  {
+                     "value": "test",
+                     "label": "Test"
+                  }
+               ]
             }
          ]
       },
@@ -299,6 +341,27 @@
                "name": "Marketplaces",
                "required": true,
                "description": "Select the marketplaces you want to include in report"
+            },
+            {
+               "id": "environment",
+               "type": "checkbox",
+               "name": "Environment (connection type)",
+               "description": "Select the environment you want to include in report",
+               "required": true,
+               "choices": [
+                  {
+                     "value": "production",
+                     "label": "Production"
+                  },
+                  {
+                     "value": "preview",
+                     "label": "Preview"
+                  },
+                  {
+                     "value": "test",
+                     "label": "Test"
+                  }
+               ]
             }
          ]
       }
