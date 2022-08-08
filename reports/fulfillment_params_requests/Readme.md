@@ -7,6 +7,7 @@ Report accepts to limit the output by:
 * Kind of request
 * Status of the request
 * List of marketplaces
+* Environment (connection type)
 
 Report can be generated in the following formats:
 * Excel2020

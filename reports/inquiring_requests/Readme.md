@@ -6,3 +6,4 @@ Report accepts to limit the output by:
 * Report period
 * Product List
 * Marketplaces
+* Environment (connection type)
