@@ -16,7 +16,7 @@ connect-cli==25.1
 connect-markdown-renderer==1.0.1
 connect-openapi-client==24.6
 connect-reports-core==24.0.3
-cookiecutter==2.1.1
+cookiecutter==1.7.3
 cssselect2==0.6.0
 decorator==5.1.1
 et-xmlfile==1.1.0
@@ -34,11 +34,11 @@ Jinja2==3.1.2
 jinja2-time==0.2.0
 jsonschema==3.2.0
 kaleido==0.2.1
-lxml==4.9.1
+lxml==4.8.0
 markdown-it-py==2.1.0
 MarkupSafe==2.1.1
 mdurl==0.1.1
-mistune==2.0.3
+mistune==0.8.4
 openpyxl==3.0.10
 orjson==3.6.8
 phonenumbers==8.12.49
