@@ -38,7 +38,7 @@ lxml==4.8.0
 markdown-it-py==2.1.0
 MarkupSafe==2.1.1
 mdurl==0.1.1
-mistune==0.8.4
+mistune==2.0.3
 openpyxl==3.0.10
 orjson==3.6.8
 phonenumbers==8.12.49
