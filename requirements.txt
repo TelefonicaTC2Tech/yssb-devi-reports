@@ -16,7 +16,7 @@ connect-cli==25.1
 connect-markdown-renderer==1.0.1
 connect-openapi-client==24.6
 connect-reports-core==24.0.3
-cookiecutter==1.7.3
+cookiecutter==2.1.1
 cssselect2==0.6.0
 decorator==5.1.1
 et-xmlfile==1.1.0
