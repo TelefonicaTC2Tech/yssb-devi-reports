@@ -19,7 +19,7 @@ FIELDS = Fields((
     Field('Customer External ID', lambda r: get_value(r, 'asset.tiers.customer.external_id')),
     Field('Asset ID', lambda r: get_value(r, 'asset.id')),
     Field('Asset External ID', lambda r: get_value(r, 'asset.external_id')),
-    Field('TC Name Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalName', 'value_error')),
+    Field('TC Name Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalContact', 'value_error')),
     Field('TC e-Mail Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalEmail', 'value_error')),
     Field('TC Phone Reason', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalPhone', 'value_error')),
     Field('Domain', lambda r: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value')),
