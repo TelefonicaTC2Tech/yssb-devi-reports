@@ -16,6 +16,12 @@ def convert_to_datetime(param_value):
         "%Y-%m-%d %H:%M:%S",
     )
 
+def convert_to_int(param_value):
+    try:
+        return int(param_value)
+    except:
+        ''
+
 def today_str():
     return datetime.today().strftime('%Y-%m-%d %H:%M:%S')
 
@@ -41,11 +47,19 @@ def get_value_from_array_by_id(d, array_path, id, path, default='-'):
     array of dictionaries, and it looks for an item with a specific 'id'.
     Finally, the value is retrieved from the 'path' inside that item.
     """
+    return get_value_from_array_by_key(d, array_path, 'id', id, path, default)
+
+def get_value_from_array_by_key(d, array_path, key, value, path, default='-'):
+    """
+    Return the value of a nested dictionary where array_path targets an
+    array of dictionaries, and it looks for an item with a specific key value.
+    Finally, the value is retrieved from the 'path' inside that item.
+    """
     items = get_value(d, array_path, default)
     if type(items) is not list:
         return default
     for item in items:
-        if item.get('id') == id:
+        if item.get(key) == value:
             return get_value(item, path, default)
     return default
 
