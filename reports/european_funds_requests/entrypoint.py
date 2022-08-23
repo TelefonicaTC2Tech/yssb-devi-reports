@@ -8,12 +8,21 @@ from connect.client import R
 from reports.fields import Field, Fields
 from reports.utils import convert_to_datetime, convert_to_int, get_value, get_value_from_array_by_id, get_value_from_array_by_key
 
+# Items of the basic packet for EU funds
 ITEMS_BASIC = [
     'Antivirus Antiransomware',
     'Secure Browsing',
     'Clean email',
     'Awareness',
 ]
+# Items that cannot be present in the basic packet for EU funds
+ITEMS_NOT_BASIC = [
+    'Secure Remote Access',
+    'Secure Office',
+    'NextGeneration EU subsidized',
+    'Protected Cloud Services'
+]
+# Items in the advanced packet for EU funds
 ITEMS_ADVANCED = ITEMS_BASIC + [
     'Secure Remote Access',
     'Secure Office',
@@ -23,16 +32,16 @@ ITEMS_ADVANCED = ITEMS_BASIC + [
 
 FIELDS = Fields((
     Field('Request ID', lambda r: get_value(r, 'id')),
+    Field('Subscription Type', lambda r: get_value(r, 'type')),
     Field('Created At', lambda r: convert_to_datetime(get_value(r, 'created'))),
-    Field('Last Change At', lambda r: convert_to_datetime(get_value(r, 'updated'))),
     Field('Customer ID', lambda r: get_value(r, 'asset.tiers.customer.id')),
+    Field('Technical Email', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalEmail', 'value')),
+    Field('Last Change At', lambda r: convert_to_datetime(get_value(r, 'updated'))),
     Field('Customer Name', lambda r: get_value(r, 'asset.tiers.customer.name')),
     Field('Customer TaxID', lambda r: get_value(r, 'asset.tiers.customer.tax_id')),
-    Field('Subscription Type', lambda r: get_value(r, 'type')),
     Field('Antivirus Quantity', lambda r: convert_to_int(get_value_from_array_by_key(r, 'asset.items', 'display_name', 'Antivirus Antiransomware', 'quantity'))),
     Field('EU Fund Packet', lambda r: _get_european_fund_packet(r)),
     Field('Technical Contact', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalContact', 'value')),
-    Field('Technical Email', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalEmail', 'value')),
     Field('Postal Address', lambda r: get_value_from_array_by_id(r, 'asset.params', 'postalAddress', 'value')),
 ))
 
@@ -97,8 +106,6 @@ def _exists_item(request, item_name):
 def _get_european_fund_packet(request):
     if all(map(lambda x: _exists_item(request, x), ITEMS_ADVANCED)):
         return 'Advanced'
-    if all(map(lambda x: _exists_item(request, x), ITEMS_BASIC)):
+    if all(map(lambda x: _exists_item(request, x), ITEMS_BASIC)) and not any(map(lambda x: _exists_item(request, x), ITEMS_NOT_BASIC)):
         return 'Basic'
-    print('no EU funds ====')
-    print(request)
     return ''
