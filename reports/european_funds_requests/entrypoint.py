@@ -20,7 +20,7 @@ ITEMS_NOT_BASIC = [
     'Secure Remote Access',
     'Secure Office',
     'NextGeneration EU subsidized',
-    'Protected Cloud Services'
+    'Protected Cloud  Services' # There is a typo in this item name with extra space!
 ]
 # Items in the advanced packet for EU funds
 ITEMS_ADVANCED = ITEMS_BASIC + [
@@ -100,7 +100,7 @@ def _get_requests(client, parameters):
 
 
 def _exists_item(request, item_name):
-    return get_value_from_array_by_key(request, 'asset.items', 'display_name', item_name, 'quantity') != '0'
+    return get_value_from_array_by_key(request, 'asset.items', 'display_name', item_name, 'quantity', '0') != '0'
 
 
 def _get_european_fund_packet(request):
