@@ -133,3 +133,4 @@ dmypy.json
 
 # Ignore excel files generated during debugging
 /*.xlsx
+~$template.xlsx
