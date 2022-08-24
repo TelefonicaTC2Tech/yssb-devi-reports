@@ -44,6 +44,9 @@ make devi-report-fulfillment
 
 # Generate an inquiring report
 make devi-report-inquiring
+
+# Generate an EU funds report
+make devi-report-eufunds
 ```
 
 ## Managing reports in Devi

@@ -43,6 +43,7 @@ FIELDS = Fields((
     Field('EU Fund Packet', lambda r: _get_european_fund_packet(r)),
     Field('Technical Contact', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalContact', 'value')),
     Field('Postal Address', lambda r: get_value_from_array_by_id(r, 'asset.params', 'postalAddress', 'value')),
+    Field('Domain', lambda r: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value')),
 ))
 
 
