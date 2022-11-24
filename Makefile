@@ -23,6 +23,7 @@ Usage: make <command>
   devi-report-fulfillment: Execute the report fulfillment_requests_taxid
   devi-report-inquiring:   Execute the report inquiring_requests
   devi-report-eufunds:     Execute the report for european funds requests
+  devi-report-changepkg:   Execute the report for package change requests
 
 endef
 export help
@@ -81,6 +82,10 @@ devi-report-inquiring:
 .PHONY: devi-report-eufunds
 devi-report-eufunds:
 	ccli report execute european_funds_requests -d .
+
+.PHONY: devi-report-changepkg
+devi-report-changepkg:
+	ccli report execute package_change_requests -d .
 
 # Functions
 info := @printf '\033[32;01m%s\033[0m\n'
