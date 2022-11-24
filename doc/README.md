@@ -47,6 +47,9 @@ make devi-report-inquiring
 
 # Generate an EU funds report
 make devi-report-eufunds
+
+# Generate a package change report
+make devi-report-changepkg
 ```
 
 ## Managing reports in Devi
