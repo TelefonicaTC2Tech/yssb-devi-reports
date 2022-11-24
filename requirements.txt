@@ -42,7 +42,7 @@ mistune==0.8.4
 openpyxl==3.0.10
 orjson==3.6.8
 phonenumbers==8.12.49
-Pillow==9.1.1
+Pillow==9.3.0
 plotly==5.8.0
 poyo==0.5.0
 prompt-toolkit==3.0.29
