@@ -11,19 +11,20 @@ DOCKER_COMPOSE          := $(DOCKER_COMPOSE_ENV) docker-compose -p '$(DOCKER_COM
 
 define help
 Usage: make <command>
-  help:                    Show this help information
-  clean:                   Clean the project
-  test:                    Pass unit tests
-  develenv-up:             Launch the development environment with a docker-compose
-  develenv-sh:             Open a shell in the development environment
-  develenv-down:           Stop the development environment
-  devi-account:            Add Devi account using the apikey with DEVI_APIKEY env var
-  devi-reports:            List the reports in Devi for this account
-  devi-report-params:      Execute the report fulfillment_params_requests
-  devi-report-fulfillment: Execute the report fulfillment_requests_taxid
-  devi-report-inquiring:   Execute the report inquiring_requests
-  devi-report-eufunds:     Execute the report for european funds requests
-  devi-report-changepkg:   Execute the report for package change requests
+  help:                    			Show this help information
+  clean:                   			Clean the project
+  test:                    			Pass unit tests
+  develenv-up:             			Launch the development environment with a docker-compose
+  develenv-sh:             			Open a shell in the development environment
+  develenv-down:           			Stop the development environment
+  devi-account:            			Add Devi account using the apikey with DEVI_APIKEY env var
+  devi-reports:            			List the reports in Devi for this account
+  devi-report-params:      			Execute the report fulfillment_params_requests
+  devi-report-fulfillment:			Execute the report fulfillment_requests
+  devi-report-fulfillment-taxid:	Execute the report fulfillment_requests_taxid
+  devi-report-inquiring:   			Execute the report inquiring_requests
+  devi-report-eufunds:     			Execute the report for european funds requests
+  devi-report-changepkg:   			Execute the report for package change requests
 
 endef
 export help
@@ -73,6 +74,10 @@ devi-report-params:
 
 .PHONY: devi-report-fulfillment
 devi-report-fulfillment:
+	ccli report execute fulfillment_requests -d .
+
+.PHONY: devi-report-fulfillment-taxid
+devi-report-fulfillment-taxid:
 	ccli report execute fulfillment_requests_taxid -d .
 
 .PHONY: devi-report-inquiring
