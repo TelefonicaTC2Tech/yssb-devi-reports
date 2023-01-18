@@ -5,9 +5,9 @@
    "language": "python",
    "reports": [
       {
-         "name": "Fulfillment requests report",
-         "readme_file": "reports/fulfillment_requests/Readme.md",
-         "entrypoint": "reports.fulfillment_requests.entrypoint.generate",
+         "name": "Fulfillment requests report advanced",
+         "readme_file": "reports/fulfillment_requests_advanced/Readme.md",
+         "entrypoint": "reports.fulfillment_requests_advanced.entrypoint.generate",
          "audience": [
            "provider",
            "vendor"
@@ -19,7 +19,7 @@
              "type": "xlsx",
              "default": true,
              "description": "Export data in Microsoft Excel 2020 format",
-             "template": "reports/fulfillment_requests/templates/xlsx/template.xlsx",
+             "template": "reports/fulfillment_requests_advanced/templates/xlsx/template.xlsx",
              "args": {
                "start_row": 2,
                "start_col": 1
@@ -133,7 +133,28 @@
              "name": "Marketplaces",
              "required": true,
              "description": "Select the marketplaces you want to include in report"
-           }
+           },
+           {
+            "id": "environment",
+            "type": "checkbox",
+            "name": "Environment (connection type)",
+            "description": "Select the environment you want to include in report",
+            "required": true,
+            "choices": [
+               {
+                  "value": "production",
+                  "label": "Production"
+               },
+               {
+                  "value": "preview",
+                  "label": "Preview"
+               },
+               {
+                  "value": "test",
+                  "label": "Test"
+               }
+            ]
+         }
          ]
        },
       {
