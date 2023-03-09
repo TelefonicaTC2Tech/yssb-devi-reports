@@ -92,7 +92,7 @@ devi-report-eufunds:
 devi-report-changepkg:
 	ccli report execute package_change_requests -d .
 
-.PHONY: devi-report-request-type-status:
+.PHONY: devi-report-request-type-status
 devi-report-request-type-status:
 	ccli report execute request_type_status_report -d .
 
