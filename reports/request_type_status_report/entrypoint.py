@@ -22,7 +22,8 @@ FIELDS = Fields((
     Field('RAZON_SOCIAL', lambda r: get_value(r, 'asset.tiers.customer.name')),
     Field('EMAIL', lambda r: get_value(r, 'asset.tiers.customer.contact_info.contact.email')),
     Field('TELEFONO', lambda r: _get_phone(r)),
-    Field('OPERACIÓN', lambda r: _get_operation(r))
+    Field('OPERACIÓN', lambda r: _get_operation(r)),
+    Field('SISTEMA', lambda r: 'TES')
 ))
 
 
