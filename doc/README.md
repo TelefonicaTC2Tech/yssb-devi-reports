@@ -50,6 +50,9 @@ make devi-report-eufunds
 
 # Generate a package change report
 make devi-report-changepkg
+
+# Generate a request type status report
+make devi-report-request-type-status
 ```
 
 ## Managing reports in Devi
