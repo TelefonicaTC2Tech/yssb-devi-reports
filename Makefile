@@ -96,5 +96,9 @@ devi-report-changepkg:
 devi-report-request-type-status:
 	ccli report execute request_type_status_report -d .
 
+.PHONY: devi-report-justifications-control
+devi-report-justifications-control:
+	ccli report execute european_funds_justifications_control -d .
+
 # Functions
 info := @printf '\033[32;01m%s\033[0m\n'

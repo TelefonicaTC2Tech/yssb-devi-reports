@@ -53,6 +53,9 @@ make devi-report-changepkg
 
 # Generate a request type status report
 make devi-report-request-type-status
+
+# Generate an EU funds justifications control report
+make devi-report-justifications-control
 ```
 
 ## Managing reports in Devi
