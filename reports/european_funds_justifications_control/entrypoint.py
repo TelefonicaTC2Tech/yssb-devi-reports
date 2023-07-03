@@ -39,6 +39,7 @@ FIELDS = Fields((
     Field('Last Change At', lambda r: convert_to_datetime(get_value(r, 'updated'))),
     Field('Customer Name', lambda r: get_value(r, 'asset.tiers.customer.name')),
     Field('Customer TaxID', lambda r: get_value(r, 'asset.tiers.customer.tax_id')),
+    Field('SubscriptionID', lambda r: get_value(r, 'asset.id')),
     Field('Antivirus Quantity', lambda r: convert_to_int(get_value_from_array_by_key(r, 'asset.items', 'display_name', 'Antivirus Antiransomware', 'quantity'))),
     Field('EU Fund Packet', lambda r: _get_european_fund_packet(r)),
     Field('Technical Contact', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalContact', 'value')),
