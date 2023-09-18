@@ -4,8 +4,28 @@
 #
 
 from datetime import datetime
+from enum import Enum
 from threading import Lock
 
+BASIC_SUBSCRIPTION = "Paquete Básico"
+BASIC_FUNDS_SUBSCRIPTION = "Paquete Básico Fondos"
+ADVANCED_SUBSCRIPTION = "Paquete Avanzado"
+ADVANCED_FUNDS_SUBSCRIPTION = "Paquete Avanzado Fondos"
+PREMIUM_SUBSCRIPTION = "Paquete Premium"
+
+BASIC_PRODUCTS = ['SEC_SMB_AA', 'SEC_SMB_SB', 'SEC_SMB_CE']
+BASIC_FUNDS_PRODUCTS = BASIC_PRODUCTS + ['SEC_SMB_AW']
+ADVANCED_PRODUCTS = BASIC_FUNDS_PRODUCTS + ['SEC_SMB_RA', 'SEC_SMB_SO']
+ADVANCED_FUNDS_PRODUCTS = ADVANCED_PRODUCTS + ['SEC_SMB_REC_FUNDS']
+PREMIUM_PRODUCTS = ADVANCED_PRODUCTS + ['SEC_SMB_PCS']
+
+class RequestType(Enum) :
+    PURCHASE = "purchase"
+    CANCEL = "cancel"
+    CHANGE = "change"
+    ADJUSTMENT = "adjustment"
+    def equals(self, string):
+       return self.value == string
 
 def convert_to_datetime(param_value):
     if param_value == "" or param_value == "-":
@@ -62,6 +82,72 @@ def get_value_from_array_by_key(d, array_path, key, value, path, default='-'):
         if item.get(key) == value:
             return get_value(item, path, default)
     return default
+
+def exists_asset_item(request, item_name):
+    """
+    Check if an item with the specified 'item_name' exists in the 'asset.items' 
+    array of the given 'request' object looking by the 'mpn' value.
+    
+    Args:
+        request (dict): The request object containing asset information.
+        item_name (str): The name or identifier of the item to check.
+    Returns:
+        bool: True if the item exists in 'asset.items' and has a quantity greater than 0, otherwise False.
+    """
+    return get_value_from_array_by_key(request, 'asset.items', 'mpn', item_name, 'quantity', '0') != '0'
+    
+def get_subscription_type(request):
+    """
+    Determine the subscription level based on the products present in the request.
+
+    This function checks the products in the 'request' object against predefined product lists and
+    returns the corresponding subscription level.
+
+    Args:
+        request (dict): The request object containing product information.
+
+    Returns:
+        str: The subscription level ('BASIC_SUBSCRIPTION', 'BASIC_FUNDS_SUBSCRIPTION',
+             'ADVANCED_SUBSCRIPTION', 'ADVANCED_FUNDS_SUBSCRIPTION', 'PREMIUM_SUBSCRIPTION') if a
+             matching set of products is found, otherwise an empty string.
+    """
+    product_to_subscription = {
+        tuple(BASIC_PRODUCTS): BASIC_SUBSCRIPTION,
+        tuple(BASIC_FUNDS_PRODUCTS): BASIC_FUNDS_SUBSCRIPTION,
+        tuple(ADVANCED_PRODUCTS): ADVANCED_SUBSCRIPTION,
+        tuple(ADVANCED_FUNDS_PRODUCTS): ADVANCED_FUNDS_SUBSCRIPTION,
+        tuple(PREMIUM_PRODUCTS): PREMIUM_SUBSCRIPTION,
+    }
+
+    subscription = ""
+
+    for products, label in product_to_subscription.items():
+        if all(exists_asset_item(request, x) for x in products):
+            subscription = label
+
+    return subscription
+
+def get_request_type(request):
+    """
+    Determine the request type based on the 'type' field in the request.
+
+    Args:
+        request (dict): The request object containing the 'type' field.
+
+    Returns:
+        str or None: A single-character code ('A' for purchase, 'B' for cancel, 'M' for change/adjustment),
+        or None if the 'type' field is not recognized.
+    """
+    type = get_value(request, "type")
+    if (RequestType.PURCHASE.equals(type)):
+        return "A"
+    elif (RequestType.CANCEL.equals(type)):
+        return "B"
+    elif (RequestType.CHANGE.equals(type) or RequestType.ADJUSTMENT.equals(type)):
+        return "M"
+    else:
+        return None
+
 
 
 class Progress:
