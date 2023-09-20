@@ -7,17 +7,21 @@ from connect.client import R
 from enum import Enum
 
 from reports.fields import Field, Fields
-from reports.utils import  get_request_type, get_value 
+from reports.utils import  convert_to_datetime, get_request_type, get_subscription_type, get_value, get_value_from_array_by_key 
 
 TES_SYSTEM = "TES"
+PRODUCT_TIER3 = "S170_Empresa Segura"
 
 FIELDS = Fields((
     Field('CIF', lambda r: get_value(r, 'asset.tiers.customer.tax_id')),
-    Field('RAZON_SOCIAL', lambda r: get_value(r, 'asset.tiers.customer.name')),
-    Field('EMAIL', lambda r: get_value(r, 'asset.tiers.customer.contact_info.contact.email')),
-    Field('TELEFONO', lambda r: _get_phone(r)),
-    Field('OPERACIÓN', lambda r: get_request_type(r)),
-    Field('SISTEMA', lambda r: TES_SYSTEM)
+    Field('Customer Name', lambda r: get_value(r, 'asset.tiers.customer.name')),
+    Field('Operation', lambda r: get_request_type(r)),
+    Field('System', lambda r: TES_SYSTEM),
+    Field('Subscription Id', lambda r: get_value(r, 'asset.id')),
+    Field('Subscription', lambda r: get_subscription_type(r)),
+    Field('Created At', lambda r: convert_to_datetime(get_value(r, 'asset.events.created.at'))),
+    Field('Update At', lambda r: convert_to_datetime(get_value(r, 'asset.events.updated.at'))),
+    Field('Product Tier3', lambda r: PRODUCT_TIER3), 
 ))
 
 
@@ -72,11 +76,3 @@ def _get_requests(client, parameters):
         query &= R().asset.connection.type.oneof(parameters['environment']['choices'])
 
     return client.requests.filter(query)
-
-def _get_phone(request):
-    country_code = get_value(request, "asset.tiers.customer.contact_info.contact.phone_number.country_code")
-    area_code = get_value(request, "asset.tiers.customer.contact_info.contact.phone_number.area_code")
-    phone_number = get_value(request, "asset.tiers.customer.contact_info.contact.phone_number.phone_number")
-    extension = get_value(request, "asset.tiers.customer.contact_info.contact.phone_number.extension")
-
-    return country_code + area_code + phone_number + extension

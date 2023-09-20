@@ -100,5 +100,9 @@ devi-report-request-type-status:
 devi-report-justifications-control:
 	ccli report execute european_funds_justifications_control -d .
 
+.PHONY: devi-approved_request_report_tes_sn
+devi-approved_request_report_tes_sn:
+	ccli report execute approved_request_report_tes_sn -d .
+
 # Functions
 info := @printf '\033[32;01m%s\033[0m\n'
