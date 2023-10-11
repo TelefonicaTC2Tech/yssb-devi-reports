@@ -36,7 +36,7 @@ FIELDS = Fields((
     Field('Id_UTM_HA', lambda r: get_value_from_array_by_id(r, 'asset.params', 'Id_UTM_HA', 'value')),
     Field('URL_Awareness', lambda r: get_value_from_array_by_id(r, 'asset.params', 'URL_Awareness', 'value')),
     Field('awareness_registration_token', lambda r: get_value_from_array_by_id(r, 'asset.params', 'awareness_registration_token', 'value')),
-    Field('domain', lambda r: get_value_from_array_by_id(r, 'asset.params', 'AntivirusLinux', 'value')),
+    Field('domain', lambda r: get_value_from_array_by_id(r, 'asset.params', 'domain', 'value')),
     Field('mail_server_1', lambda r: get_value_from_array_by_id(r, 'asset.params', 'mail_server_1', 'value')),
     Field('mail_server_2', lambda r: get_value_from_array_by_id(r, 'asset.params', 'mail_server_2', 'value')),
     Field('postalAddress', lambda r: get_value_from_array_by_id(r, 'asset.params', 'postalAddress', 'value')),
