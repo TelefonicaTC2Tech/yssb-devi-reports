@@ -33,7 +33,8 @@ ITEMS_ADVANCED = ITEMS_BASIC + [
 FIELDS = Fields((
     Field('Request ID', lambda r: get_value(r, 'id')),
     Field('Subscription Type', lambda r: get_value(r, 'type')),
-    Field('Created At', lambda r: convert_to_datetime(get_value(r, 'created'))),
+    Field('Created At', lambda r: _get_created_date(r)),
+    Field('Approved_At', lambda r: convert_to_datetime(get_value(r, 'updated'))),
     Field('Customer ID', lambda r: get_value(r, 'asset.tiers.customer.id')),
     Field('Technical Email', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalEmail', 'value')),
     Field('Last Change At', lambda r: convert_to_datetime(get_value(r, 'updated'))),
@@ -109,4 +110,10 @@ def _get_european_fund_packet(request):
         return 'Advanced'
     if all(map(lambda x: _exists_item(request, x), ITEMS_BASIC)) and not any(map(lambda x: _exists_item(request, x), ITEMS_NOT_BASIC)):
         return 'Basic'
-    return ''
+    return 'NO'
+
+def _get_created_date(request):
+    if get_value(request, 'type') == "cancel":
+        return ''
+    else:
+        return convert_to_datetime(get_value(request, 'created'))
