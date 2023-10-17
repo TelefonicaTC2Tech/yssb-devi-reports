@@ -700,7 +700,7 @@ PR_FUNDS_ADVANCED = {
 class TestFunds(unittest.TestCase):
     def test_get_european_fund_packet_with_no_funds_basic(self):
         packet = _get_european_fund_packet(PR_NO_FUNDS_BASIC)
-        self.assertEqual(packet, '')
+        self.assertEqual(packet, 'NO')
 
     def test_get_european_fund_packet_with_funds_basic(self):
         packet = _get_european_fund_packet(PR_FUNDS_BASIC)
@@ -708,7 +708,7 @@ class TestFunds(unittest.TestCase):
 
     def test_get_european_fund_packet_with_no_funds_advanced(self):
         packet = _get_european_fund_packet(PR_NO_FUNDS_ADVANCED)
-        self.assertEqual(packet, '')
+        self.assertEqual(packet, 'NO')
 
     def test_get_european_fund_packet_with_funds_advanced(self):
         packet = _get_european_fund_packet(PR_FUNDS_ADVANCED)
