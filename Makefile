@@ -104,5 +104,9 @@ devi-report-justifications-control:
 devi-approved_request_report_tes_sn:
 	ccli report execute approved_request_report_tes_sn -d .
 
+.PHONY: devi-active_assets_customer_report
+devi-active_assets_customer_report:
+	ccli report execute active_assets_customer_report -d .
+
 # Functions
 info := @printf '\033[32;01m%s\033[0m\n'

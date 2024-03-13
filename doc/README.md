@@ -56,7 +56,9 @@ make devi-report-request-type-status
 
 # Generate an EU funds justifications control report
 make devi-report-justifications-control
-```
+
+# Generate an Customer by Assets Status report
+make devi-active_assets_customer_report
 
 ## Managing reports in Devi
 
