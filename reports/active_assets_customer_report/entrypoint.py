@@ -86,8 +86,8 @@ def _get_assets(client, parameters):
     #status = ['active']
 
     query = R()
-    query &= R().events.created.at.ge(parameters['date']['after'])
-    query &= R().events.created.at.le(parameters['date']['before'])
+    #query &= R().events.created.at.ge(parameters['date']['after'])
+    #query &= R().events.created.at.le(parameters['date']['before'])
 
     if parameters.get('mkp') and parameters['mkp']['all'] is False:
         query &= R().marketplace.id.oneof(parameters['mkp']['choices'])

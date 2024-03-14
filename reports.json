@@ -5,7 +5,7 @@
    "language": "python",
    "reports": [
       {
-         "name": "Customer by Assets Status Report",
+         "name": "Customer by Subscription Status Report",
          "readme_file": "reports/active_assets_customer_report/Readme.md",
          "entrypoint": "reports.active_assets_customer_report.entrypoint.generate",
          "audience": [
@@ -40,13 +40,6 @@
          ],
          "parameters": [
             {
-               "id": "date",
-               "type": "date_range",
-               "name": "Report period",
-               "description": "Provide the time period to create the report",
-               "required": true
-            },
-            {
                "id": "product",
                "type": "product",
                "name": "Product list",
@@ -56,7 +49,7 @@
             {
               "id": "rr_status",
               "type": "checkbox",
-              "name": "Request status",
+              "name": "Subscription status",
               "description": "Select the status of the subscriptions you want to include in report",
               "required": true,
               "choices": [
