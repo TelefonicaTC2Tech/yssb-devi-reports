@@ -4,10 +4,9 @@
 #
 
 from connect.client import R
-from enum import Enum
 
 from reports.fields import Field, Fields
-from reports.utils import  convert_to_datetime, get_request_type, get_subscription_type, get_value, get_value_from_array_by_key 
+from reports.utils import  convert_to_datetime, exists_asset_item, get_request_type, get_subscription_type, get_value 
 
 TES_SYSTEM = "TES"
 PRODUCT_TIER3 = "S170_Empresa Segura"
@@ -18,7 +17,7 @@ FIELDS = Fields((
     Field('Operation', lambda r: get_request_type(r)),
     Field('System', lambda r: TES_SYSTEM),
     Field('Subscription Id', lambda r: get_value(r, 'asset.id')),
-    Field('Subscription', lambda r: get_subscription_type(r)),
+    Field('Subscription', lambda r: get_subscription_type(r, exists_function=exists_asset_item)),
     Field('Created At', lambda r: convert_to_datetime(get_value(r, 'asset.events.created.at'))),
     Field('Update At', lambda r: convert_to_datetime(get_value(r, 'asset.events.updated.at'))),
     Field('Product Tier3', lambda r: PRODUCT_TIER3), 

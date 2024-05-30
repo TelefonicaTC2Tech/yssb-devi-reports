@@ -2,13 +2,11 @@
 #
 # Copyright (c) 2022, Telefónica Cybersecurity & Cloud Tech
 #
-import json
 
 from connect.client import R
-from enum import Enum
 
 from reports.fields import Field, Fields
-from reports.utils import  convert_to_datetime, get_request_type, get_subscription_type, get_value, get_value_from_array_by_key, get_value_from_array_by_id 
+from reports.utils import  convert_to_datetime, get_value, get_value_from_array_by_id 
 
 DATA_GEOGRAPHY = "DE"
 BILLING_TYPE = "usage"

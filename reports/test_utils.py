@@ -5,7 +5,7 @@
 
 import unittest
 
-from reports.utils import get_request_type, get_subscription_type, get_value, get_value_from_array_by_id
+from reports.utils import exists_asset_item, get_request_type, get_subscription_type, get_value, get_value_from_array_by_id
 
 class TestUtilsGetValue(unittest.TestCase):
     def _build_test_dict(self):
@@ -1024,23 +1024,23 @@ class TestUtilsGetSubscriptionType(unittest.TestCase):
 }
 
     def test_get_basic_subscription(self):
-        packet = get_subscription_type(self.PR_BASIC)
+        packet = get_subscription_type(self.PR_BASIC, exists_asset_item)
         self.assertEqual(packet, 'Paquete Básico')
 
     def test_get_basic_funds_subscription(self):
-        packet = get_subscription_type(self.PR_FUNDS_BASIC)
+        packet = get_subscription_type(self.PR_FUNDS_BASIC, exists_asset_item)
         self.assertEqual(packet, 'Paquete Básico Fondos')
 
     def test_get_advanced_subscription(self):
-        packet = get_subscription_type(self.PR_ADVANCED)
+        packet = get_subscription_type(self.PR_ADVANCED, exists_asset_item)
         self.assertEqual(packet, 'Paquete Avanzado')
 
     def test_get_advanced_funds_subscription(self):
-        packet = get_subscription_type(self.PR_FUNDS_ADVANCED)
+        packet = get_subscription_type(self.PR_FUNDS_ADVANCED, exists_asset_item)
         self.assertEqual(packet, 'Paquete Avanzado Fondos')
 
     def test_get_premium_subscription(self):
-        packet = get_subscription_type(self.PR_PREMIUM)
+        packet = get_subscription_type(self.PR_PREMIUM, exists_asset_item)
         self.assertEqual(packet, 'Paquete Premium')
 
 
