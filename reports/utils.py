@@ -95,12 +95,25 @@ def exists_asset_item(request, item_name):
         bool: True if the item exists in 'asset.items' and has a quantity greater than 0, otherwise False.
     """
     return get_value_from_array_by_key(request, 'asset.items', 'mpn', item_name, 'quantity', '0') != '0'
-    
-def get_subscription_type(request):
-    """
-    Determine the subscription level based on the products present in the request.
 
-    This function checks the products in the 'request' object against predefined product lists and
+def exists_item(subscription, item_name):
+    """
+    Check if an item with the specified 'item_name' exists in the 'items' 
+    array of the given 'subcription' object looking by the 'mpn' value.
+    
+    Args:
+        subcription (dict): The subcription object containing items information.
+        item_name (str): The name or identifier of the item to check.
+    Returns:
+        bool: True if the item exists in 'items' and has a quantity greater than 0, otherwise False.
+    """
+    return get_value_from_array_by_key(subscription, 'items', 'mpn', item_name, 'quantity', '0') != '0'
+    
+def get_subscription_type(item, exists_function):
+    """
+    Determine the subscription level based on the products present in the items
+
+    This function checks the products in the 'items' properties against predefined product lists and
     returns the corresponding subscription level.
 
     Args:
@@ -122,7 +135,7 @@ def get_subscription_type(request):
     subscription = ""
 
     for products, label in product_to_subscription.items():
-        if all(exists_asset_item(request, x) for x in products):
+        if all(exists_function(item, x) for x in products):
             subscription = label
 
     return subscription

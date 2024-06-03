@@ -112,5 +112,9 @@ devi-active_assets_customer_report:
 devi-antivirus_assets_report:
 	ccli report execute antivirus_assets_report -d .
 
+.PHONY: devi-active_customer_report
+devi-active_customer_report:
+	ccli report execute active_customer_report -d .
+
 # Functions
 info := @printf '\033[32;01m%s\033[0m\n'
