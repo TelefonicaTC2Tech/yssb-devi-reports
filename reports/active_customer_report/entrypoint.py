@@ -12,7 +12,7 @@ from reports.utils import  convert_to_datetime, exists_item, get_subscription_ty
 
 
 FIELDS = Fields((
-    Field('created_at', lambda s: convert_to_datetime(get_value(s, 'events.created.at'))),
+    Field('created_at', lambda s: convert_to_datetime(get_value(s, 'events.created.at')).strftime("%Y/%m/%d %H:%M:%S")),
     Field('customer_name', lambda s: get_value(s, 'tiers.customer.name')),
     Field('customer_external_id', lambda s: get_value(s, 'tiers.customer.external_id')),
     Field('technical_email', lambda s: get_value_from_array_by_id(s, 'params', "technicalEmail", 'value')),
@@ -34,7 +34,7 @@ FIELDS = Fields((
     Field('tier_contact_last_name', lambda s: get_value(s, 'tiers.customer.contact_info.contact.last_name')),
     Field('tier_phone', lambda s: "{} {}".format(get_value(s, 'tiers.customer.contact_info.contact.phone_number.country_code'), get_value(s, 'tiers.customer.contact_info.contact.phone_number.phone_number'))),
     Field('digital_signature', lambda s: "Sí" if exists_item(s, "SEC_SMB_DS") else ""),
-    Field('pem_premium',  lambda s: get_value_from_array_by_key(s, 'items', "mpn", "SEC_SMB_TES_ADDON_PEM", 'quantity')),
+    Field('pem_premium',  lambda s: get_value_from_array_by_key(s, 'items', "mpn", "SEC_SMB_TES_ADDON_PEM", 'quantity', '')),
     Field('endpoint_active_licenses', lambda s: ''),
     Field('mobile_active_licenses', lambda s: '')
 ))
@@ -55,7 +55,7 @@ def generate(
         total += 1
         progress_callback(progress, total)
 
-    for asset in assets[0:100]: 
+    for asset in assets: 
         values = FIELDS.process(asset)
         if renderer_type == 'json':
             yield dict(zip(FIELDS.json_names(), values))
