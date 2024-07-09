@@ -94,7 +94,7 @@ def exists_asset_item(request, item_name):
     Returns:
         bool: True if the item exists in 'asset.items' and has a quantity greater than 0, otherwise False.
     """
-    return get_value_from_array_by_key(request, 'asset.items', 'mpn', item_name, 'quantity', '0') != '0'
+    return int(get_value_from_array_by_key(request, 'asset.items', 'mpn', item_name, 'quantity', '0')) != 0
 
 def exists_item(subscription, item_name):
     """
@@ -107,7 +107,7 @@ def exists_item(subscription, item_name):
     Returns:
         bool: True if the item exists in 'items' and has a quantity greater than 0, otherwise False.
     """
-    return get_value_from_array_by_key(subscription, 'items', 'mpn', item_name, 'quantity', '0') != '0'
+    return int(get_value_from_array_by_key(subscription, 'items', 'mpn', item_name, 'quantity', '0')) != 0
     
 def get_subscription_type(item, exists_function):
     """
@@ -132,13 +132,14 @@ def get_subscription_type(item, exists_function):
         tuple(PREMIUM_PRODUCTS): PREMIUM_SUBSCRIPTION,
     }
 
-    subscription = ""
+    subscription_name = ""
+
 
     for products, label in product_to_subscription.items():
         if all(exists_function(item, x) for x in products):
-            subscription = label
+            subscription_name = label
 
-    return subscription
+    return subscription_name
 
 def get_request_type(request):
     """
