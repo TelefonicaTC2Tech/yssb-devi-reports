@@ -29,7 +29,7 @@ def send_soar_report(url, soar_id, soar_key, soar_name, start_date, end_date, to
         "FechaFinEjecucion": end_date_str,
         "fk_pais": "ES",
         "NotaInterna": soar_name,
-        "Timestamp": start_date_str
+        "Timestamp": end_date_str
     }
     
     # Headers
