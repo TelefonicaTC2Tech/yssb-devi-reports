@@ -1359,7 +1359,36 @@
                      "label": "Test"
                   }
                ]
+            },
+            {
+               "id": "soar_url",
+               "type": "choice",
+               "name": "Url SOAR",
+               "description": "Select the environment url to send the soar's report. Two options are available: Preview and Production",
+               "required": true,
+               "choices": [
+                  {
+                     "value": "NO_SEND",
+                     "label": "Don't send report"
+                  },
+                  {
+                     "value": "https://adm.pre.cloudportal.telefonicatech.com",
+                     "label": "Preview"
+                  },
+                  {
+                     "value": "https://adm.cloudportal.telefonicatech.com",
+                     "label": "Production"
+                  }
+               ]
+            },
+            {
+               "id": "soar_token",
+               "type": "single_line",
+               "name": "Token SOAR",
+               "description": "Token to send the SOAR report. If the token is not specified, the report will not be sent.",
+               "required": false
             }
+
          ]
       },
       {
