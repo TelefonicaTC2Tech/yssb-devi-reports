@@ -3,13 +3,18 @@
 # Copyright (c) 2022, Telefónica Cybersecurity & Cloud Tech
 #
 
+from datetime import datetime
 from connect.client import R
 
 from reports.fields import Field, Fields
 from reports.utils import  convert_to_datetime, exists_asset_item, get_request_type, get_subscription_type, get_value 
+from soar.soar_report import send_soar_report
 
 TES_SYSTEM = "TES"
 PRODUCT_TIER3 = "S170_Empresa Segura"
+SOAR_ID = "8e07096c-fbaf-44eb-8760-879e2ffaf4cf"
+SOAR_KEY = "TES_SN"
+SOAR_NAME = "Generacion automatica de informes SN"
 
 FIELDS = Fields((
     Field('CIF', lambda r: get_value(r, 'asset.tiers.customer.tax_id')),
@@ -31,6 +36,8 @@ def generate(
     renderer_type=None,
     extra_context_callback=None,
 ):
+    
+    start_date = datetime.now()
     requests = _get_requests(client, parameters)
     progress = 0
     total = requests.count()
@@ -50,6 +57,11 @@ def generate(
                 yield values
         progress += 1
         progress_callback(progress, total)
+
+    end_date = datetime.now()
+
+    if (parameters['soar_url'] != "NO_SEND" and parameters['soar_token'] != ""):
+        send_soar_report(parameters['soar_url'], SOAR_ID, SOAR_KEY, SOAR_NAME, start_date, end_date, parameters['soar_token'])
 
 
 def _get_requests(client, parameters):
