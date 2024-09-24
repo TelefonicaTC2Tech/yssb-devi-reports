@@ -104,6 +104,11 @@ devi-report-justifications-control:
 devi-approved_request_report_tes_sn:
 	ccli report execute approved_request_report_tes_sn -d .
 
+.PHONY: devi-approved_request_report_kit_digital_sn
+devi-approved_request_report_kit_digital_sn:
+	ccli report execute approved_request_report_kit_digital_sn -d .
+
+
 .PHONY: devi-active_assets_customer_report
 devi-active_assets_customer_report:
 	ccli report execute active_assets_customer_report -d .
