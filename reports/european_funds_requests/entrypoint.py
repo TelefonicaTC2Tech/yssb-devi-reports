@@ -90,10 +90,6 @@ def _get_requests(client, parameters):
         query &= R().status.oneof(parameters['rr_status']['choices'])
     if parameters.get('mkp') and parameters['mkp']['all'] is False:
         query &= R().asset.marketplace.id.oneof(parameters['mkp']['choices'])
-    if parameters.get('hub') and parameters['hub']['all'] is False:
-        query &= R().asset.connection.hub.id.oneof(parameters['hub']['choices'])
-    else:
-        query &= R().asset.connection.type.oneof(all_connections)
     if parameters.get('environment') and parameters['environment']['all'] is False:
         query &= R().asset.connection.type.oneof(parameters['environment']['choices'])
 

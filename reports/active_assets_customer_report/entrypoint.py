@@ -89,9 +89,7 @@ def _get_assets(client, parameters):
 
     if parameters.get('mkp') and parameters['mkp']['all'] is False:
         query &= R().marketplace.id.oneof(parameters['mkp']['choices'])
-    
-    if parameters.get('hub') and parameters['hub']['all'] is False:
-        query &= R().connection.hub.id.oneof(parameters['hub']['choices'])
+
     else:
         query &= R().connection.type.oneof(all_connections)
     
