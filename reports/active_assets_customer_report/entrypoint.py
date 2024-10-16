@@ -80,24 +80,10 @@ def generate(
         progress_callback(progress, total)
 
 def _get_assets(client, parameters):
-    all_connections = ['production']
-    #status = ['active']
-
     query = R()
-    #query &= R().events.created.at.ge(parameters['date']['after'])
-    #query &= R().events.created.at.le(parameters['date']['before'])
-
     if parameters.get('mkp') and parameters['mkp']['all'] is False:
-        query &= R().marketplace.id.oneof(parameters['mkp']['choices'])
-    
-    if parameters.get('hub') and parameters['hub']['all'] is False:
-        query &= R().connection.hub.id.oneof(parameters['hub']['choices'])
-    else:
-        query &= R().connection.type.oneof(all_connections)
-    
+        query &= R().marketplace.id.oneof(parameters['mkp']['choices'])  
     if parameters.get('rr_status') and parameters['rr_status']['all'] is False:
         query &= R().status.oneof(parameters['rr_status']['choices'])
     
-    #query &= R().status.oneof(status)
-
     return client('subscriptions').assets.filter(query)

@@ -8,7 +8,7 @@ from connect.client import R
 from enum import Enum
 
 from reports.fields import Field, Fields
-from reports.utils import  get_request_type, get_value
+from reports.utils import  exists_asset_item, get_request_type, get_subscription_type, get_value
 from soar.soar_report import send_soar_report 
 
 TES_SYSTEM = "TES"
@@ -23,7 +23,8 @@ FIELDS = Fields((
     Field('EMAIL', lambda r: get_value(r, 'asset.tiers.customer.contact_info.contact.email')),
     Field('TELEFONO', lambda r: _get_phone(r)),
     Field('OPERACIÓN', lambda r: get_request_type(r)),
-    Field('SISTEMA', lambda r: TES_SYSTEM)
+    Field('SISTEMA', lambda r: TES_SYSTEM),
+    Field('SUBCRIPCIÓN', lambda r: get_subscription_type(r, exists_function=exists_asset_item))
 ))
 
 
@@ -76,10 +77,6 @@ def _get_requests(client, parameters):
         query &= R().status.oneof(parameters['rr_status']['choices'])
     if parameters.get('mkp') and parameters['mkp']['all'] is False:
         query &= R().asset.marketplace.id.oneof(parameters['mkp']['choices'])
-    if parameters.get('hub') and parameters['hub']['all'] is False:
-        query &= R().asset.connection.hub.id.oneof(parameters['hub']['choices'])
-    else:
-        query &= R().asset.connection.type.oneof(all_connections)
     if parameters.get('environment') and parameters['environment']['all'] is False:
         query &= R().asset.connection.type.oneof(parameters['environment']['choices'])
 
