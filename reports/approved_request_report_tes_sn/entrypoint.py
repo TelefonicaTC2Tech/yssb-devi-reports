@@ -60,8 +60,10 @@ def generate(
 
     end_date = datetime.now()
 
-    if (parameters['soar_url'] != "NO_SEND" and parameters['soar_token'] != ""):
-        send_soar_report(parameters['soar_url'], SOAR_ID, SOAR_KEY, SOAR_NAME, start_date, end_date, parameters['soar_token'])
+    if (parameters['soar_url'] != "NO_SEND" and parameters['soar_token'] != "") or \
+        (parameters['soar_url'] == "CUSTOM" and parameters['soar_custom_url'] != ""):
+        url = parameters['soar_custom_url'] if parameters['soar_url'] == "CUSTOM" else parameters['soar_url']
+        send_soar_report(url, SOAR_ID, SOAR_KEY, SOAR_NAME, start_date, end_date, parameters['soar_token'])
 
 
 def _get_requests(client, parameters):

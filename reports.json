@@ -470,14 +470,25 @@
                      "label": "Don't send report"
                   },
                   {
-                     "value": "https://adm.pre.cloudportal.telefonicatech.com",
+                     "value": "https://adm.pre.cloudportal.telefonicatech.com/WS/v2/api/AUTO_flujos_ejecuciones",
                      "label": "Preview"
                   },
                   {
-                     "value": "https://adm.cloudportal.telefonicatech.com",
+                     "value": "https://adm.cloudportal.telefonicatech.com/WS/v2/api/AUTO_flujos_ejecuciones",
                      "label": "Production"
+                  },
+                  {
+                     "value": "CUSTOM",
+                     "label": "Custom"
                   }
                ]
+            },
+            {
+               "id": "soar_custom_url",
+               "type": "single_line",
+               "name": "URL Custom SOAR",
+               "description": "Custom url to send the SOAR report. If the url is not specified, the report will not be sent.",
+               "required": false
             },
             {
                "id": "soar_token",
@@ -639,14 +650,25 @@
                      "label": "Don't send report"
                   },
                   {
-                     "value": "https://adm.pre.cloudportal.telefonicatech.com",
+                     "value": "https://adm.pre.cloudportal.telefonicatech.com/WS/v2/api/AUTO_flujos_ejecuciones",
                      "label": "Preview"
                   },
                   {
-                     "value": "https://adm.cloudportal.telefonicatech.com",
+                     "value": "https://adm.cloudportal.telefonicatech.com/WS/v2/api/AUTO_flujos_ejecuciones",
                      "label": "Production"
+                  }, 
+                  {
+                     "value": "CUSTOM",
+                     "label": "Custom"
                   }
                ]
+            },
+            {
+               "id": "soar_custom_url",
+               "type": "single_line",
+               "name": "URL Custom SOAR",
+               "description": "Custom url to send the SOAR report. If the url is not specified, the report will not be sent.",
+               "required": false
             },
             {
                "id": "soar_token",
@@ -1541,14 +1563,25 @@
                      "label": "Don't send report"
                   },
                   {
-                     "value": "https://adm.pre.cloudportal.telefonicatech.com",
+                     "value": "https://adm.pre.cloudportal.telefonicatech.com/WS/v2/api/AUTO_flujos_ejecuciones",
                      "label": "Preview"
                   },
                   {
-                     "value": "https://adm.cloudportal.telefonicatech.com",
+                     "value": "https://adm.cloudportal.telefonicatech.com/WS/v2/api/AUTO_flujos_ejecuciones",
                      "label": "Production"
+                  },
+                  {
+                     "value": "CUSTOM",
+                     "label": "Custom"
                   }
                ]
+            },
+            {
+               "id": "soar_custom_url",
+               "type": "single_line",
+               "name": "URL Custom SOAR",
+               "description": "Custom url to send the SOAR report. If the url is not specified, the report will not be sent.",
+               "required": false
             },
             {
                "id": "soar_token",
