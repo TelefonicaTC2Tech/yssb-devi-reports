@@ -39,7 +39,7 @@ def send_soar_report(url, soar_id, soar_key, soar_name, start_date, end_date, to
     }
     
     # Send the POST request
-    response = requests.post(f"{url}/WS/v1/api/AUTO_flujos_ejecuciones", json=data, headers=headers)
+    response = requests.post(f"{url}", json=data, headers=headers)
     
     # Handle the response
     if response.status_code == 201:
