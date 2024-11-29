@@ -175,6 +175,29 @@ def get_request_type(request):
         return "M"
     else:
         return None
+    
+def exists_asset_items(request, items):
+    """
+    Determine if the request has a list of items.
+
+    Args:
+        request (dict): The request object containing the 'asset.items' field.
+        items (list): The list of the items that request must have.
+
+    Returns:
+        bool: True if the item exists in 'asset.items' and has a quantity greater than 0, otherwise False.
+        
+    """
+    if len(items) == 0:
+        return True
+    else:
+        hasItems = True
+        for item in items:
+            if not exists_asset_item(request, item):
+                hasItems = False
+        
+        return hasItems
+
 
 
 
