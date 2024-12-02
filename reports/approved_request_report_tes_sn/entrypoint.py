@@ -7,7 +7,7 @@ from datetime import datetime
 from connect.client import R
 
 from reports.fields import Field, Fields
-from reports.utils import  convert_to_datetime, exists_asset_item, get_request_type, get_subscription_type, get_value 
+from reports.utils import  convert_to_datetime, exists_asset_item, exists_asset_items, get_request_type, get_subscription_type, get_value 
 from soar.soar_report import send_soar_report
 
 TES_SYSTEM = "TES"
@@ -49,7 +49,7 @@ def generate(
 
     for request in requests:
         # Only process if the subscription corresponds to european funds
-        if get_request_type(request) != None:
+        if get_request_type(request) != None and exists_asset_items(request, parameters["items"]["choices"]):
             values = FIELDS.process(request)
             if renderer_type == 'json':
                 yield dict(zip(FIELDS.json_names(), values))
