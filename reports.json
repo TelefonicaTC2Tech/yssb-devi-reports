@@ -459,6 +459,54 @@
                ]
             },
             {
+               "id": "items",
+               "type": "checkbox",
+               "name": "Products (items)",
+               "description": "Select the products with you want to filter the report",
+               "choices": [
+                  {
+                    "value": "SEC_SMB_MANAGED_CYBERSEC",
+                    "label": "SEC_SMB_MANAGED_CYBERSEC"
+                  },
+                  {
+                    "value": "SEC_SMB_REC_FUNDS",
+                    "label": "SEC_SMB_REC_FUNDS"
+                  },
+                  {
+                    "value": "SEC_SMB_SECURE_COMMS",
+                    "label": "SEC_SMB_SECURE_COMMS"
+                  },
+                  {
+                    "value": "SEC_SMB_AA",
+                    "label": "SEC_SMB_AA"
+                  },
+                  {
+                    "value": "SEC_SMB_SB",
+                    "label": "SEC_SMB_SB"
+                  },
+                  {
+                    "value": "SEC_SMB_CE",
+                    "label": "SEC_SMB_CE"
+                  },
+                  {
+                    "value": "SEC_SMB_AW",
+                    "label": "SEC_SMB_AW"
+                  },
+                  {
+                    "value": "SEC_SMB_RA",
+                    "label": "SEC_SMB_RA"
+                  },
+                  {
+                    "value": "SEC_SMB_SO",
+                    "label": "SEC_SMB_SO"
+                  },
+                  {
+                    "value": "SEC_SMB_PCS",
+                    "label": "SEC_SMB_PCS"
+                  }
+                ]       
+            },
+            {
                "id": "soar_url",
                "type": "choice",
                "name": "Url SOAR",
