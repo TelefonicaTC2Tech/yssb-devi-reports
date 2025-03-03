@@ -85,5 +85,7 @@ def _get_assets(client, parameters):
         query &= R().marketplace.id.oneof(parameters['mkp']['choices'])  
     if parameters.get('rr_status') and parameters['rr_status']['all'] is False:
         query &= R().status.oneof(parameters['rr_status']['choices'])
+    if parameters.get('environment') and parameters['environment']['all'] is False:
+        query &= R().connection.type.oneof(parameters['environment']['choices'])
     
     return client('subscriptions').assets.filter(query)
