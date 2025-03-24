@@ -46,6 +46,8 @@ FIELDS = Fields((
     Field('Technical Contact Name', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalContact', 'value')),
     Field('Technical Contact Email', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalEmail', 'value')),
     Field('Technical Contact Phone', lambda r: get_value_from_array_by_id(r, 'asset.params', 'technicalPhone', 'value')),
+    Field('Antivirus Provider', lambda r: get_value_from_array_by_id(r, 'asset.params', "Antivirus_Provider", 'value', 'Trellix')),
+    Field('AV XDR MDR Installer Type', lambda r: get_value_from_array_by_id(r, 'asset.params', "xdr_av_installation", 'value')),
 ))
 
 def generate(
