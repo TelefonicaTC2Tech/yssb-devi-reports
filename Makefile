@@ -76,6 +76,10 @@ devi-report-params:
 tgt-devi-report-params:
 	ccli report execute tgt_fulfillment_params_requests -d .
 
+.PHONY: tgt-devi-request-line-item
+tgt-devi-request-line-item:
+	ccli report execute tgt_fulfillment_requests_line_item -d .
+
 .PHONY: devi-report-fulfillment-advanced
 devi-report-fulfillment-advanced:
 	ccli report execute fulfillment_requests_advanced -d .

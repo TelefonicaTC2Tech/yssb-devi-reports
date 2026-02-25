@@ -19,6 +19,7 @@ FIELDS = Fields((
     Field('Customer External ID', lambda r: get_value(r, 'asset.tiers.customer.external_id')),
     Field('Asset ID', lambda r: get_value(r, 'asset.id')),
     Field('Asset External ID', lambda r: get_value(r, 'asset.external_id')),
+    Field('Asset_Status', lambda r: get_value(r, 'asset.status').capitalize()),
     Field('Access_type', lambda r: get_value_from_array_by_id(r, 'asset.params', 'Access_type', 'value')),
     Field('postalAddress', lambda r: get_value_from_array_by_id(r, 'asset.params', 'postalAddress', 'value')),
     Field('salesTEemail', lambda r: get_value_from_array_by_id(r, 'asset.params', 'salesTEemail', 'value')),
