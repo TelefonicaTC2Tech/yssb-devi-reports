@@ -1397,7 +1397,7 @@
                "type": "xlsx",
                "default": true,
                "description": "Export data in Microsoft Excel 2020 format.",
-               "template": "reports/tgt_fulfillment_params_requests/templates/xlsx/template.xlsx",
+               "template": "reports/tgt_fulfillment_requests_line_item/templates/xlsx/template.xlsx",
                "args": {
                   "start_row": 2,
                   "start_col": 1
