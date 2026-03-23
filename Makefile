@@ -80,6 +80,10 @@ tgt-devi-report-params:
 tgt-devi-request-line-item:
 	ccli report execute tgt_fulfillment_requests_line_item -d .
 
+.PHONY: tgt-devi-asset-line-item
+tgt-devi-asset-line-item:
+	ccli report execute tgt_fulfillment_assets_line_item -d .
+
 .PHONY: devi-report-fulfillment-advanced
 devi-report-fulfillment-advanced:
 	ccli report execute fulfillment_requests_advanced -d .
@@ -111,6 +115,10 @@ devi-report-justifications-control:
 .PHONY: devi-approved_request_report_tes_sn
 devi-approved_request_report_tes_sn:
 	ccli report execute approved_request_report_tes_sn -d .
+
+.PHONY: devi-approved_request_report_tgt_sn
+devi-approved_request_report_tgt_sn:
+	ccli report execute approved_request_report_tgt_sn -d .
 
 .PHONY: devi-approved_request_report_kit_digital_sn
 devi-approved_request_report_kit_digital_sn:
