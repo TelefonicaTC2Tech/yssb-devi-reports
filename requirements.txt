@@ -6,7 +6,7 @@ asgiref==3.5.2
 attrs==21.4.0
 binaryornot==0.4.4
 Brotli==1.0.9
-certifi==2022.5.18.1
+certifi==2024.7.4
 cffi==1.15.0
 chardet==4.0.0
 charset-normalizer==2.0.12
